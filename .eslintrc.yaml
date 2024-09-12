@@ -8,6 +8,20 @@ parserOptions:
   sourceType: module
 plugins:
   - "@typescript-eslint"
+  - prettier
 extends:
   - "plugin:@typescript-eslint/recommended"
   - "htmlacademy/node"
+  - "plugin:prettier/recommended"
+rules:
+  prettier/prettier:
+    - "error"
+    -
+      trailingComma: all
+      bracketSpacing: true
+      singleQuote: true
+      useTabs: true
+      semi: true
+      endOfLine: auto
+      printWidth: 100
+
