@@ -1,4 +1,4 @@
-import { Entity } from './Entity.js';
+import { Entity } from './entity.interface.js';
 
 export type HotelType = 'apartment' | 'house' | 'room' | 'hotel';
 export type Facility =
