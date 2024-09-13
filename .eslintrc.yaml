@@ -20,8 +20,9 @@ rules:
       trailingComma: all
       bracketSpacing: true
       singleQuote: true
-      useTabs: true
+      useTabs: false
       semi: true
       endOfLine: auto
       printWidth: 100
+      tabWidth: 2
 

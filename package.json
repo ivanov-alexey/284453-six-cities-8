@@ -16,6 +16,7 @@
     "cli:import": "npx tsx src/main.cli.ts --import mocks/data.tsv",
     "cli:generate": "npx tsx src/main.cli.ts --generate",
     "lint": "eslint src/ --ext .ts",
+    "lint:fix": "eslint src/ --ext .ts --fix",
     "compile": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
     "ts": "tsc --noEmit && node --no-warnings=ExperimentalWarning --loader ts-node/esm"

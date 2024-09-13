@@ -2,14 +2,14 @@ import { Command, CommandType } from './command.interface.js';
 import { ConsoleLogger } from '../../shared/index.js';
 
 export class HelpCommand implements Command {
-	private readonly name: CommandType = CommandType.help;
+  private readonly name: CommandType = CommandType.help;
 
-	public getName(): CommandType {
-		return this.name;
-	}
+  public getName(): CommandType {
+    return this.name;
+  }
 
-	public async run(..._params: string[]): Promise<void> {
-		ConsoleLogger.log(`
+  public async run(..._params: string[]): Promise<void> {
+    ConsoleLogger.log(`
     Программа для подготовки данных для REST API сервера.
 
     Пример: cli.js --<command> [--arguments]
@@ -20,5 +20,5 @@ export class HelpCommand implements Command {
      --import <path>:             # импортирует данные из TSV
      --generate <n> <path> <url>  # генерирует произвольное количество тестовых данных
 		`);
-	}
+  }
 }
