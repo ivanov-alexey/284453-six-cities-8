@@ -1,0 +1,12 @@
+{
+  "api": {
+    "city": ["Paris", "Cologne", "Brussels", "Amsterdam", "Hamburg", "Dusseldorf"],
+    "description": ["Featuring free WiFi throughout the property, HotelF1 Paris Saint Ouen Marché Aux Puces Rénové offers rooms with a flat-screen TV.", "The 4-star hotel Pullman Paris Tour Eiffel is set at the foot of the Eiffel Tower and the Trocadero.", "Located in the north of Paris near Boulevard Périphérique, ibis Budget Paris Porte De Montmartre is just a 10-minute walk from Porte de Saint-Ouen Metro Station.", "The citizenM Paris Gare de Lyon is set in the 12th district of Paris. It offers views of the Seine and is located near to Gare de Lyon train station.", "The Novotel Paris Center Tour Eiffel is within walking distance of the Eiffel Tower in the heart of Paris and is a 10-minute drive to the Parc des Princes Stadium."],
+    "facilities": ["Breakfast", "Air conditioning", "Laptop friendly workspace", "Baby seat", "Washer", "Towels", "Fridge"],
+    "coordinates": [[48.85661, 2.351499], [50.938361, 6.959974], [50.846557, 4.351697], [52.370216, 4.895168], [53.550341, 10.000654], [51.225402, 6.776314]],
+    "name": ["Hotel Monceau WagramOpens in new window", "Le 7 Eiffel Hotel by MaloneOpens in new window", "A delightful studio with terrace", "Hotel du Collectionneur", "Best Western Montcalm"],
+    "photos": ["https://cdn.worldota.net/t/640x400/extranet/e4/bc/e4bcf60900e64c658ae2938b16aba9efcc5858e5.JPEG", "https://cdn.worldota.net/t/640x400/extranet/5c/7f/5c7f4ecfec95120ceac833d3373cae8fd66c7321.JPEG", "https://cdn.worldota.net/t/640x400/extranet/e4/bc/e4bcf60900e64c658ae2938b16aba9efcc5858e5.JPEG", "https://cdn.worldota.net/t/640x400/extranet/5c/7f/5c7f4ecfec95120ceac833d3373cae8fd66c7321.JPEG"],
+    "previewUrl": ["https://cdn.worldota.net/t/640x400/extranet/db/22/db22bb803d39d3ebeb185cee7b577c50dc3bf04e.jpeg", "https://cdn.worldota.net/t/640x400/extranet/a0/8a/a08af327129a27e3fb10e7024692d1ed0fe8192a.JPEG"],
+    "type": ["apartment", "house", "room", "hotel"]
+  }
+}

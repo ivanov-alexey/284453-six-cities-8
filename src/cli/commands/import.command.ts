@@ -1,15 +1,27 @@
-import path from 'node:path';
-import { readFileSync } from 'node:fs';
 import { Command, CommandType } from './command.interface.js';
-import { ConsoleLogger } from '../../shared/index.js';
+import { ConsoleLogger } from '../../shared/logger/index.js';
+import { TSVFileReader } from '../../shared/libs/file-reader/index.js';
+import { TSVFileParser } from '../../shared/libs/file-parser/index.js';
+import { Hotel } from '../../shared/types/index.js';
 
 export class ImportCommand implements Command {
   private readonly name: CommandType = CommandType.import;
 
-  private importFile(filePath: string): string {
-    const fullPath = path.join(process.cwd(), filePath);
+  private onImport(hotel: Hotel): void {
+    ConsoleLogger.info(hotel.toString());
+  }
 
-    return readFileSync(fullPath, { encoding: 'utf8' });
+  private onCompleteImport(count: number) {
+    ConsoleLogger.info(`Total ${count} rows imported.`);
+  }
+
+  private async readFile(filePath: string): Promise<void> {
+    const fileReader = new TSVFileReader(filePath, new TSVFileParser());
+
+    fileReader.on('line', this.onImport);
+    fileReader.on('end', this.onCompleteImport);
+
+    await fileReader.read();
   }
 
   public getName(): CommandType {
@@ -32,9 +44,7 @@ export class ImportCommand implements Command {
     }
 
     try {
-      const content = this.importFile(filePath);
-
-      ConsoleLogger.info(content);
+      await this.readFile(filePath);
     } catch (e: unknown) {
       ConsoleLogger.error(`Failed to load file with path: ${filePath}`);
 

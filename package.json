@@ -11,10 +11,11 @@
   "scripts": {
     "start": "npm run build && node ./dist/main.js",
     "build": "npm run clean && npm run compile",
+    "mock:server": "json-server ./mocks/mock-server-data.json --port 3123 --host localhost",
     "cli:version": "npx tsx src/main.cli.ts --version",
     "cli:help": "npx tsx src/main.cli.ts --help",
     "cli:import": "npx tsx src/main.cli.ts --import mocks/data.tsv",
-    "cli:generate": "npx tsx src/main.cli.ts --generate",
+    "cli:generate": "npx tsx src/main.cli.ts --generate 10 mocks/data.tsv http://localhost:3123/api",
     "lint": "eslint src/ --ext .ts",
     "lint:fix": "eslint src/ --ext .ts --fix",
     "compile": "tsc -p tsconfig.json",
@@ -29,6 +30,7 @@
     "eslint-config-htmlacademy": "9.1.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
+    "json-server": "0.17.3",
     "prettier": "3.3.3",
     "rimraf": "5.0.1",
     "ts-node": "10.9.2",
@@ -40,6 +42,8 @@
     "npm": ">=10"
   },
   "dependencies": {
-    "chalk": "^5.3.0"
+    "chalk": "^5.3.0",
+    "dayjs": "1.11.13",
+    "got": "14.4.2"
   }
 }

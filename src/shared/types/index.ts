@@ -1,3 +1,3 @@
-export { Comment } from './comment.interface.js';
-export { Hotel } from './hotel.interface.js';
-export { UserType, User } from './user.interface.js';
+export type { Comment } from './comment.interface.js';
+export type { Hotel } from './hotel.interface.js';
+export type { UserType, User } from './user.interface.js';

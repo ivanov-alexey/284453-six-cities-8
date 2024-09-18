@@ -16,4 +16,8 @@ export class ConsoleLogger {
   public static error(message: string): void {
     console.log(chalk.red(message));
   }
+
+  public static success(message: string): void {
+    console.log(chalk.green(message));
+  }
 }

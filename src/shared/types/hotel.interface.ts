@@ -25,7 +25,7 @@ export interface Hotel extends Entity {
   name: string;
   photos: string[];
   previewUrl: string;
-  publishedAt: string;
+  publishedAt: number;
   rating: number;
   rentPrice: number;
   type: HotelType;
