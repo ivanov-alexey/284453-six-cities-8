@@ -1,5 +1,5 @@
 import { Command, CommandType } from './command.interface.js';
-import { ConsoleLogger } from '../../shared/index.js';
+import { ConsoleLogger } from '../../shared/logger/index.js';
 
 export class HelpCommand implements Command {
   private readonly name: CommandType = CommandType.help;

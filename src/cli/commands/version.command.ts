@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
 import { Command, CommandType } from './command.interface.js';
-import { ConsoleLogger } from '../../shared/index.js';
+import { ConsoleLogger } from '../../shared/logger/index.js';
 
 export class VersionCommand implements Command {
   private readonly name: CommandType = CommandType.version;
