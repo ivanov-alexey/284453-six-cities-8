@@ -1,13 +1,18 @@
 import got from 'got';
 import { Command, CommandType } from './command.interface.js';
-import { ConsoleLogger } from '../../shared/logger/index.js';
+import { Logger, MessageLogger } from '../../shared/logger/index.js';
 import { MockServerData } from '../../shared/types/mock-sever-data.interface.js';
 import { TSVDataGenerator } from '../../shared/libs/data-generator/index.js';
 import { appendFile } from 'node:fs/promises';
 
 export class GenerateCommand implements Command {
+  private readonly logger: Logger;
   private readonly name: CommandType = CommandType.generate;
   private initialData: MockServerData = {} as MockServerData;
+
+  constructor() {
+    this.logger = new MessageLogger();
+  }
 
   private async loadData(url: string) {
     try {
@@ -36,18 +41,18 @@ export class GenerateCommand implements Command {
     const offerCount = Number.parseInt(count, 10);
 
     try {
-      ConsoleLogger.info(`Generate ${offerCount} offers from ${url} to ${filepath} file`);
-      ConsoleLogger.info(`Loading...`);
+      this.logger.info(`Generate ${offerCount} offers from ${url} to ${filepath} file`);
+      this.logger.info(`Loading...`);
 
       await this.loadData(url);
       await this.writeData(filepath, offerCount);
 
-      ConsoleLogger.success(`File ${filepath} was created!`);
+      this.logger.info(`File ${filepath} was created!`);
     } catch (e: unknown) {
-      ConsoleLogger.error(`Failed to generate file with params: ${params}`);
+      this.logger.warn(`Failed to generate file with params: ${params}`);
 
       if (e instanceof Error) {
-        ConsoleLogger.error(e.message);
+        this.logger.error(e.message, e);
       }
     }
   }

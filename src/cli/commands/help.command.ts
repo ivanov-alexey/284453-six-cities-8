@@ -1,15 +1,20 @@
 import { Command, CommandType } from './command.interface.js';
-import { ConsoleLogger } from '../../shared/logger/index.js';
+import { Logger, MessageLogger } from '../../shared/logger/index.js';
 
 export class HelpCommand implements Command {
   private readonly name: CommandType = CommandType.help;
+  private readonly logger: Logger;
+
+  constructor() {
+    this.logger = new MessageLogger();
+  }
 
   public getName(): CommandType {
     return this.name;
   }
 
   public async run(..._params: string[]): Promise<void> {
-    ConsoleLogger.log(`
+    this.logger.info(`
     Программа для подготовки данных для REST API сервера.
 
     Пример: cli.js --<command> [--arguments]

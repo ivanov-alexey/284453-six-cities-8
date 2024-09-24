@@ -1,18 +1,23 @@
 import { Command, CommandType } from './command.interface.js';
-import { ConsoleLogger } from '../../shared/logger/index.js';
+import { Logger, MessageLogger } from '../../shared/logger/index.js';
 import { TSVFileReader } from '../../shared/libs/file-reader/index.js';
 import { TSVFileParser } from '../../shared/libs/file-parser/index.js';
 import { Hotel } from '../../shared/types/index.js';
 
 export class ImportCommand implements Command {
   private readonly name: CommandType = CommandType.import;
+  private readonly logger: Logger;
+
+  constructor() {
+    this.logger = new MessageLogger();
+  }
 
   private onImport(hotel: Hotel): void {
-    ConsoleLogger.info(hotel.toString());
+    this.logger.info(hotel.toString());
   }
 
   private onCompleteImport(count: number) {
-    ConsoleLogger.info(`Total ${count} rows imported.`);
+    this.logger.info(`Total ${count} rows imported.`);
   }
 
   private async readFile(filePath: string): Promise<void> {
@@ -32,13 +37,13 @@ export class ImportCommand implements Command {
     const [filePath] = params;
 
     if (!filePath) {
-      ConsoleLogger.error(`Invalid file path: ${filePath}`);
+      this.logger.warn(`Invalid file path: ${filePath}`);
 
       return;
     }
 
     if (params.length > 1) {
-      ConsoleLogger.error(`Too many arguments for command`);
+      this.logger.warn(`Too many arguments for command`);
 
       return;
     }
@@ -46,10 +51,10 @@ export class ImportCommand implements Command {
     try {
       await this.readFile(filePath);
     } catch (e: unknown) {
-      ConsoleLogger.error(`Failed to load file with path: ${filePath}`);
+      this.logger.warn(`Failed to load file with path: ${filePath}`);
 
       if (e instanceof Error) {
-        ConsoleLogger.error(e.message);
+        this.logger.error(e.message, e);
       }
     }
   }
